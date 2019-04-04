@@ -44,26 +44,29 @@ const App = () => {
   }
 
   const Course = ({course}) => {
+    
       return(
         <div>
         <Header course = {course} />
         <Content course={course} />
-      </div>
+        <Total course = {course} />
+        </div>
       )
 
   }
 
-/*const Total = ({course})=> {
+const Total = ({course})=> {
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  const tehtavat = (course.parts.map(part  => part.exercises));
+
   return (
     <div>
       <p>
-        yhteensä {course.parts[0].exercises + 
-        course.parts[1].exercises + course.parts[2].exercises} tehtävää
+        yhteensä {tehtavat.reduce(reducer,0)} tehtävää
       </p>
     </div>
   )
-} */
-
+}           
 
 
 const Part = ({name, exercises})=> {
@@ -88,7 +91,6 @@ const Content = ({course})=> {
       </ul>
     )
 }
-
 
 
 ReactDOM.render(<App />, document.getElementById('root'))
