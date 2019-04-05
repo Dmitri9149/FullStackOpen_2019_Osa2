@@ -15,8 +15,10 @@ const Header = ({course})=> {
 }
 
 const App = () => {
-    const course = {
+  const courses = [
+    {
       name: 'Half Stack -sovelluskehitys',
+      id: 1,
       parts: [
         {
           name: 'Reactin perusteet',
@@ -29,16 +31,37 @@ const App = () => {
           id: 2
         },
         {
-            name: 'Komponenttien tila',
-            exercises: 14,
-            id: 3
-        }    
+          name: 'Komponenttien tila',
+          exercises: 14,
+          id: 3
+        }
+      ]
+    },
+    {
+      name: 'Node.js',
+      id: 2,
+      parts: [
+        {
+          name: 'Routing',
+          exercises: 3,
+          id: 1
+        },
+        {
+          name: 'Middlewaret',
+          exercises: 7,
+          id: 2
+        }
       ]
     }
+  ]
+
   
     return (
       <div>
-        <Course course={course} />
+        <h1>Opetusohjelma</h1>
+        <ul>
+          {courses.map(course => <li> <Course key = {course.id} course={course} /> </li>)}
+        </ul>    
       </div>
     )
   }
@@ -47,10 +70,11 @@ const App = () => {
     
       return(
         <div>
-        <Header course = {course} />
-        <Content course={course} />
-        <Total course = {course} />
+          <Header course = {course} />
+          <Content course={course} />
+          <Total course = {course} />
         </div>
+        
       )
 
   }
