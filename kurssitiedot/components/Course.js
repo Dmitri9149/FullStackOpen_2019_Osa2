@@ -62,6 +62,3 @@ const Content = ({course})=> {
 }
 
 export default Course
-
-
-
