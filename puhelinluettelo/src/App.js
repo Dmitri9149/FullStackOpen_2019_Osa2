@@ -24,7 +24,7 @@ const App = () => {
 
   const rows = () => persons.map(person =>
     <Person
-     
+      key = {person.name}
       person={person}
     />
   )
