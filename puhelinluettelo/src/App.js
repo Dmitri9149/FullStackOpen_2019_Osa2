@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Person from "./components/Person"
 
 const App = () => {
   const [ persons, setPersons] = useState([
@@ -20,6 +21,13 @@ const App = () => {
     console.log(event.target.value)
     setNewName(event.target.value)
   }
+
+  const rows = () => persons.map(person =>
+    <Person
+     
+      person={person}
+    />
+  )
 
   return (
     <div>
