@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Person from "./components/Person"
+import Filter from './components/Filter';
 
 const App = () => {
   const [ persons, setPersons] = useState([
@@ -57,13 +58,11 @@ const App = () => {
     <div>
       <h2>Puhelinluettelo</h2>
       <form onSubmit = {addPerson}>
-        <div>
-          rajaa näytettäviä:
-          <input
-            value = {newFilter}
-            onChange = {handlePersonFilter} 
-          />
-        </div><br/>
+        <Filter
+          heading = " rajaa näytettäviä:"
+          value = {newFilter}
+          onChange = {handlePersonFilter} 
+        /><br/>
         <div>
           nimi: 
           <input
