@@ -9,12 +9,17 @@ const App = () => {
 
   const addName = (event) => {
     event.preventDefault()
-    const nameObject = {
-      name: newName
+    const arrayOfNames = persons.map(person => person.name)
+    const isItNewName = arrayOfNames.indexOf(newName)
+    if (isItNewName < 0) {
+      const nameObject = {
+        name: newName
+      }
+      setPersons(persons.concat(nameObject))
+      setNewName('')
+    } else {
+      window.alert(`${newName} on jo luettelossa`);
     }
-  
-    setPersons(persons.concat(nameObject))
-    setNewName('')
   }
 
   const handleNameChange = (event) => {
