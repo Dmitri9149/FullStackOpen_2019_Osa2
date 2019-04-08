@@ -57,13 +57,13 @@ const App = () => {
   return (
     <div>
       <h2>Puhelinluettelo</h2>
+      <Filter
+        heading = " rajaa näytettäviä:"
+        value = {newFilter}
+        onChange = {handlePersonFilter} 
+      /><br/>
+      <h3>lisää uusi</h3>       
       <form onSubmit = {addPerson}>
-        <Filter
-          heading = " rajaa näytettäviä:"
-          value = {newFilter}
-          onChange = {handlePersonFilter} 
-        /><br/>
-        <h3>lisää uusi</h3>   
         <div>
           nimi: 
           <input
