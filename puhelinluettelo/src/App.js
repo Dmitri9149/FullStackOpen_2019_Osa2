@@ -63,6 +63,7 @@ const App = () => {
           value = {newFilter}
           onChange = {handlePersonFilter} 
         /><br/>
+        <h3>lisää uusi</h3>   
         <div>
           nimi: 
           <input
