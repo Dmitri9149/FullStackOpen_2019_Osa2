@@ -3,10 +3,11 @@ import Person from "./components/Person"
 
 const App = () => {
   const [ persons, setPersons] = useState([
-    { name: 'Arto Hellas', number:"050"}
+    { name: 'Arto Hellas', number:"050", newFilter:""}
   ]) 
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
+  const [newFilter, setNewFilter] = useState("")
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -35,7 +36,17 @@ const App = () => {
     setNewNumber(event.target.value)
   }
 
-  const rows = () => persons.map(person =>
+  const handlePersonFilter = (event) => {
+    console.log(event.target.value)
+    setNewFilter(event.target.value)
+  }
+
+  const personsToShow =  newFilter === ""
+  ? persons
+  : persons.filter(person => person.name.toLowerCase().startsWith(newFilter.toLowerCase()));
+  
+
+  const rows = () => personsToShow.map(person =>
     <Person
       key = {person.name}
       person={person}
@@ -47,27 +58,34 @@ const App = () => {
       <h2>Puhelinluettelo</h2>
       <form onSubmit = {addPerson}>
         <div>
+          rajaa näytettäviä:
+          <input
+            value = {newFilter}
+            onChange = {handlePersonFilter} 
+          />
+        </div><br/>
+        <div>
           nimi: 
           <input
             value ={newName}
             onChange = {handleNameChange}
            />
-        </div>
+        </div><br/>
         <div>
           numero:
           <input
             value ={newNumber}
             onChange = {handleNumberChange}
           />
-        </div>
+        </div><br/>
         <div>
           <button type="submit">lisää</button>
         </div>
       </form>
       <h2>Numerot</h2>
-        <ul>
-          {rows()}
-        </ul>
+          <ul>
+            {rows()}
+          </ul> 
     </div>
   )
 
