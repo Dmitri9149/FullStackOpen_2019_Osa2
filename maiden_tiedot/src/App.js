@@ -3,31 +3,25 @@ import axios from 'axios'
 import Country from './components/Country'
 import Filter from './components/Filter'
 
-class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      countries: [],
-      filter: ''
-      
-    }
-    console.log('constructor')
-  }
+const App = () => {
 
-  componentDidMount() {
-    console.log('did mount')
+  const [countries, setCountries] = useState([])
+
+
+  useEffect(() =>  {
+    console.log('effect')
     axios
       .get('https://restcountries.eu/rest/v2/all')
       .then(response => {
         console.log('promise fulfilled')
-        this.setState({ countries: response.data })
+        setCountries(response.data)
       })
-  }
+  }, [])
 
   
-  handleCountryChangeRajaa = (event) => {
+  const handleCountryChangeRajaa = (event) => {
     console.log(event.target.value)
-    this.setState({ filter: event.target.value})
+    setState(event.target.value)
   }
 
   render() {
@@ -76,8 +70,10 @@ class App extends React.Component {
         <div>{whatToView()}</div>
       </div>  
     )
-  }    
+  } 
 }
+
+
 
 
 export default App
