@@ -26,7 +26,7 @@ const App = () => {
     setFilter(event.target.value)
   }
 
-  const countriesFilter = countries.filter(country => country.name.toLowerCase().startsWith(filter.toLowerCase()))
+  const countriesFilter = countries.filter(country => country.name.toLowerCase().includes(filter.toLowerCase()))
   const countriesToShow = filter === ""
     ?countries
     :countriesFilter; 
