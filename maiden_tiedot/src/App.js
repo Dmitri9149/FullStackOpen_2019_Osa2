@@ -8,8 +8,6 @@ const App = () => {
   const [countries, setCountries] = useState([])
   const [filter, setFilter] = useState("")
 
-
-
   useEffect(() =>  {
     console.log('effect')
     axios
@@ -20,12 +18,10 @@ const App = () => {
       })
   }, [])
 
-  
   const handleCountryChangeRajaa = (event) => {
     console.log(event.target.value)
     setFilter(event.target.value)
   }
-
 
   const countriesFilter = countries.filter(country => country.name.toLowerCase().includes(filter.toLowerCase()))
 
@@ -33,49 +29,44 @@ const App = () => {
     ?"too many matches, specify another filter"
     :"";
 
-    const whatToView = () => {  
-      if (countriesFilter.length >1 && countriesFilter.length <= 10 ) {
-        return (
-          <div>
-            <ul>
-              {countriesFilter.map((country) => <li  key ={country.name}> {country.name}</li>)}
-            </ul>
-          </div>  
-          )
-      } else if (countriesFilter.length === 1) {
-        return (
-          <div>
-            {countriesFilter.map((country) => <Country key ={country.name} country = {country}/>)}
-          </div>  
-        )
-      } else {
-        return (
+  const whatToView = () => {  
+    if (countriesFilter.length >1 && countriesFilter.length <= 10 ) {
+      return (
+        <div>
+          <ul>
+            {countriesFilter.map((country) => <li  key ={country.name}> {country.name}</li>)}
+          </ul>
+        </div>  
+      )
+    } else if (countriesFilter.length === 1) {
+      return (
+        <div>
+          {countriesFilter.map((country) => <Country key ={country.name} country = {country}/>)}
+        </div>  
+      )
+    } else {
+      return (
         null
-        )
-     }
+      )
+    }
 
-    } 
+  } 
     
-
-    return (
-      <div>
-        <form >
-          <Filter 
+  return (
+    <div>
+      <form >
+        <Filter 
           heading ="find countries:" 
           value = {filter} 
           onChange ={handleCountryChangeRajaa}
           filteringWarning = {filteringWarning}
           />
-        </form ><br/>
-        <div>{whatToView()}</div>
-      </div>  
-    )
-
-
+      </form ><br/>
+      <div>
+        {whatToView()}
+      </div>
+    </div>  
+  )    
 } 
-
-
-
-
 
 export default App
