@@ -1,4 +1,4 @@
-import React from 'react';
+import React,  { useState, useEffect } from 'react';
 import axios from 'axios'
 import Country from './components/Country'
 import Filter from './components/Filter'
@@ -6,6 +6,8 @@ import Filter from './components/Filter'
 const App = () => {
 
   const [countries, setCountries] = useState([])
+  const [filter, setFilter] = useState("")
+
 
 
   useEffect(() =>  {
@@ -21,21 +23,17 @@ const App = () => {
   
   const handleCountryChangeRajaa = (event) => {
     console.log(event.target.value)
-    setState(event.target.value)
+    setFilter(event.target.value)
   }
 
-  render() {
-    console.log('render')
+  const countriesFilter = countries.filter(country => country.name.toLowerCase().startsWith(filter.toLowerCase()))
+  const countriesToShow = filter === ""
+    ?countries
+    :countriesFilter; 
 
-    const countriesFilter =  this.state.countries.filter(country => country.name.toLowerCase().startsWith(this.state.filter.toLowerCase()))
-    const countriesToShow =
-      this.state.filter === ""?
-      this.state.countries:
-      countriesFilter; 
-
-    const filteringWarning  = countriesFilter.length > 10 ? 
-      "too many matches, specify another filter":
-      "";
+  const filteringWarning  = countriesFilter.length > 10  
+    ?"too many matches, specify another filter"
+    :"";
 
     const whatToView = () => {  
       if (countriesFilter.length >1 && countriesFilter.length <= 10 ) {
@@ -62,16 +60,18 @@ const App = () => {
         <form >
           <Filter 
           heading ="find countries:" 
-          value = {this.state.filter} 
-          onChange ={this.handleCountryChangeRajaa}
+          value = {filter} 
+          onChange ={handleCountryChangeRajaa}
           filteringWarning = {filteringWarning}
           />
         </form ><br/>
         <div>{whatToView()}</div>
       </div>  
     )
-  } 
-}
+
+
+} 
+
 
 
 
