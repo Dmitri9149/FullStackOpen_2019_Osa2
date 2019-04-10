@@ -26,10 +26,8 @@ const App = () => {
     setFilter(event.target.value)
   }
 
+
   const countriesFilter = countries.filter(country => country.name.toLowerCase().includes(filter.toLowerCase()))
-  const countriesToShow = filter === ""
-    ?countries
-    :countriesFilter; 
 
   const filteringWarning  = countriesFilter.length > 10  
     ?"too many matches, specify another filter"
@@ -40,20 +38,24 @@ const App = () => {
         return (
           <div>
             <ul>
-              {countriesToShow.map((country) => <li  key ={country.name}> {country.name}</li>)}
+              {countriesFilter.map((country) => <li  key ={country.name}> {country.name}</li>)}
             </ul>
           </div>  
           )
-        }
-        
-      if (countriesFilter.length === 1)  {
+      } else if (countriesFilter.length === 1) {
         return (
           <div>
-            {countriesToShow.map((country) => <Country key ={country.name} country = {country}/>)}
+            {countriesFilter.map((country) => <Country key ={country.name} country = {country}/>)}
           </div>  
         )
-      }
-    }  
+      } else {
+        return (
+        null
+        )
+     }
+
+    } 
+    
 
     return (
       <div>
