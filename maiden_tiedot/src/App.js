@@ -23,18 +23,25 @@ const App = () => {
     setFilter(event.target.value)
   }
 
+  const handleOnClick = (e) => {
+    console.log(e)
+    setFilter(e)
+  }
+
   const countriesFilter = countries.filter(country => country.name.toLowerCase().includes(filter.toLowerCase()))
 
   const filteringWarning  = countriesFilter.length > 10  
     ?"too many matches, specify another filter"
     :"";
 
-  const whatToView = () => {  
+  const WhatToView = ({countriesFilter, handleOnClick}) => {  
     if (countriesFilter.length >1 && countriesFilter.length <= 10 ) {
       return (
         <div>
           <ul>
-            {countriesFilter.map((country) => <li  key ={country.name}> {country.name}</li>)}
+            {countriesFilter.map((country) => <li  onClick = {()=> handleOnClick(country.name)} key ={country.name}> 
+                                                {country.name}
+                                              </li>)}
           </ul>
         </div>  
       )
@@ -44,13 +51,22 @@ const App = () => {
           {countriesFilter.map((country) => <Country key ={country.name} country = {country}/>)}
         </div>  
       )
+    } else if (countriesFilter.lenght > 10){
+      return (
+        <div>
+          Too many countries
+        </div> 
+      )  
     } else {
       return (
-        null
-      )
+      <div>
+        Nothing to show
+    </div>
+      )      
     }
-
-  } 
+      
+}
+ 
     
   return (
     <div>
@@ -63,7 +79,10 @@ const App = () => {
           />
       </form ><br/>
       <div>
-        {whatToView()}
+      <WhatToView 
+        countriesFilter = {countriesFilter}
+        handleOnClick = {handleOnClick}
+        />
       </div>
     </div>  
   )    
