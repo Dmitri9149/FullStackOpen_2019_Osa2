@@ -39,7 +39,8 @@ const App = () => {
       return (
         <div>
           <ul>
-            {countriesFilter.map((country) => <li  onClick = {()=> handleOnClick(country.name)} key ={country.name}> 
+            {countriesFilter.map((country) => <li  onClick = {()=> handleOnClick(country.name)} key ={country.name}>
+                                                <button type="OnClick">show</button> 
                                                 {country.name}
                                               </li>)}
           </ul>
