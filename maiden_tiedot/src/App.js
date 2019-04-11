@@ -67,8 +67,7 @@ const App = () => {
     }
       
 }
- 
-    
+
   return (
     <div>
       <form >
