@@ -34,39 +34,7 @@ const App = () => {
     ?"too many matches, specify another filter"
     :"";
 
-  const WhatToView = ({countriesFilter, handleOnClick}) => {  
-    if (countriesFilter.length >1 && countriesFilter.length <= 10 ) {
-      return (
-        <div>
-          <ul>
-            {countriesFilter.map((country) => <li  onClick = {()=> handleOnClick(country.name)} key ={country.name}>
-                                                <button type="OnClick">show</button> 
-                                                {country.name}
-                                              </li>)}
-          </ul>
-        </div>  
-      )
-    } else if (countriesFilter.length === 1) {
-      return (
-        <div>
-          {countriesFilter.map((country) => <Country key ={country.name} country = {country}/>)}
-        </div>  
-      )
-    } else if (countriesFilter.lenght > 10){
-      return (
-        <div>
-          Too many countries
-        </div> 
-      )  
-    } else {
-      return (
-      <div>
-        Nothing to show
-    </div>
-      )      
-    }
-      
-}
+
 
   return (
     <div>
@@ -85,7 +53,42 @@ const App = () => {
         />
       </div>
     </div>  
-  )    
+  )
 } 
+
+
+const WhatToView = ({countriesFilter, handleOnClick}) => {  
+  if (countriesFilter.length >1 && countriesFilter.length <= 10 ) {
+    return (
+      <div>
+        <ul>
+          {countriesFilter.map((country) => <li  onClick = {()=> handleOnClick(country.name)} key ={country.name}>
+                                                <button type="OnClick">show</button> 
+                                                {country.name}
+                                              </li>)}
+        </ul>
+      </div>  
+    )
+  } else if (countriesFilter.length === 1) {
+    return (
+      <div>
+        {countriesFilter.map((country) => <Country key ={country.name} country = {country}/>)}
+      </div>  
+    )
+  } else if (countriesFilter.lenght > 10){
+      return (
+        <div>
+          Too many countries
+        </div> 
+      )  
+  } else {
+      return (
+        <div>
+          Nothing to show
+        </div>
+      )      
+  }
+      
+}
 
 export default App
