@@ -7,6 +7,7 @@ const App = () => {
 
   const [countries, setCountries] = useState([])
   const [filter, setFilter] = useState("")
+  
 
   useEffect(() =>  {
     console.log('effect')
@@ -16,7 +17,10 @@ const App = () => {
         console.log('promise fulfilled')
         setCountries(response.data)
       })
+
   }, [])
+
+
 
   const handleCountryChangeRajaa = (event) => {
     console.log(event.target.value)
@@ -57,7 +61,7 @@ const App = () => {
 } 
 
 
-const WhatToView = ({countriesFilter, handleOnClick}) => {  
+const WhatToView = ({countriesFilter, handleOnClick, weather}) => {  
   if (countriesFilter.length >1 && countriesFilter.length <= 10 ) {
     return (
       <div>
@@ -72,7 +76,7 @@ const WhatToView = ({countriesFilter, handleOnClick}) => {
   } else if (countriesFilter.length === 1) {
     return (
       <div>
-        {countriesFilter.map((country) => <Country key ={country.name} country = {country}/>)}
+        {countriesFilter.map((country) => <Country key ={country.name} country = {country} />)}
       </div>  
     )
   } else if (countriesFilter.lenght > 10){
