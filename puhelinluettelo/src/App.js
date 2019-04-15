@@ -34,7 +34,7 @@ const App = () => {
       }
 
       personService
-      .post(personObject)
+      .create(personObject)
       .then(response => {
         setPersons(persons.concat(response.data))
         setNewName('')
