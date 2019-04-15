@@ -97,13 +97,14 @@ const App = () => {
         handleNumberChange = {handleNumberChange}        
       />    
       <h2>Numerot</h2>
-          <ul>
+          <table>
+            <tbody>
             <Persons 
-              key ={person.id}
               personsToShow = {personsToShow}
-              onClick = {deletePerson(person.id)}
+              onClick={deletePerson}
             />  
-          </ul> 
+            </tbody>
+          </table>
     </div>
   )
 
