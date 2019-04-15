@@ -19,6 +19,7 @@ const App = () => {
         setPersons(response.data)
       })
   }, [])
+  
   console.log('render', persons.length, 'persons') 
   
 
@@ -32,9 +33,15 @@ const App = () => {
         name: newName,
         number:newNumber 
       }
-      setPersons(persons.concat(personObject))
-      setNewName('')
-      setNewNumber("")
+
+      axios
+      .post('http://localhost:3001/persons', personObject)
+      .then(response => {
+        setPersons(persons.concat(response.data))
+        setNewName('')
+        setNewNumber("")
+      })    
+
     } else {
       window.alert(`${newName} on jo luettelossa`);
     }
