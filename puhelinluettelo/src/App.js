@@ -45,6 +45,21 @@ const App = () => {
     }
   }
 
+  const deletePerson = (id) => {
+    return () => {
+      const person = persons.find(person => person.id === id)
+      if (window.confirm(`Poistetaanko   "${person.name}"  ?`)) {
+        personService
+        .del(id)
+        .then(response => {
+          console.log(response)
+          const newPersons = persons.filter(person => person.id !== id)
+          setPersons(newPersons)
+        })
+      }
+    }
+  }
+
   const handleNameChange = (event) => {
     console.log(event.target.value)
     setNewName(event.target.value)
@@ -84,7 +99,9 @@ const App = () => {
       <h2>Numerot</h2>
           <ul>
             <Persons 
+              key ={person.id}
               personsToShow = {personsToShow}
+              onClick = {deletePerson(person.id)}
             />  
           </ul> 
     </div>
