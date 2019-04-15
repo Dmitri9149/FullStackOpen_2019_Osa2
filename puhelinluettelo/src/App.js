@@ -14,7 +14,7 @@ const App = () => {
   useEffect(() => {
     console.log('effect')
     personService
-      .get('http://localhost:3001/persons')
+      .get()
       .then(response => {
         console.log('promise fulfilled')
         setPersons(response.data)
@@ -22,8 +22,6 @@ const App = () => {
   }, [])
 
   console.log('render', persons.length, 'persons') 
-  
-
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -36,7 +34,7 @@ const App = () => {
       }
 
       personService
-      .post('http://localhost:3001/persons', personObject)
+      .post(personObject)
       .then(response => {
         setPersons(persons.concat(response.data))
         setNewName('')
