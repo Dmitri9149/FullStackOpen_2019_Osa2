@@ -26,22 +26,28 @@ const App = () => {
     event.preventDefault()
     const arrayOfNames = persons.map(person => person.name)
     const isItNewName = arrayOfNames.indexOf(newName)
-    if (isItNewName < 0) {
-      const personObject = {
-        name: newName,
-        number:newNumber 
-      }
+    const personObject = {
+      name: newName,
+      number:newNumber 
+    }
 
+    if (isItNewName < 0) {
+      console.log(isItNewName)
       personService
-      .create(personObject)
-      .then(response => {
-        setPersons(persons.concat(response.data))
-        setNewName('')
-        setNewNumber("")
+        .create(personObject)
+        .then(response => {
+          setPersons(persons.concat(response.data))
+          setNewName('')
+          setNewNumber("")
       })    
 
     } else {
-      window.alert(`${newName} on jo luettelossa`);
+//      window.alert(`${newName} on jo luettelossa`);
+
+        
+        const indexOfName = persons[isItNewName].id
+        console.log(indexOfName)
+        numberUpdate(indexOfName, personObject)
     }
   }
 
@@ -60,6 +66,21 @@ const App = () => {
     }
   }
 
+  const numberUpdate = (id, personObject) => {
+    if (window.confirm(`"${personObject.name}"   on jo luettelossa, korvaatanko vanha numero uudella ?`)){
+      personService
+        .update(id, personObject)
+        .then(response => {
+          console.log(response, "in numberUpdate")
+          setPersons(persons.map(person => person.id !== id ? person : response.data))
+          setNewName("")
+          setNewNumber("")
+        })
+    }  
+  }  
+  
+      
+  
   const handleNameChange = (event) => {
     console.log(event.target.value)
     setNewName(event.target.value)
