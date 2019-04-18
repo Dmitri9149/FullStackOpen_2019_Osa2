@@ -88,6 +88,7 @@ const App = () => {
             setNotify({message:"", messageClass:"nothing"})
           }, 1000)                   
         })
+
       }
     }
   }
@@ -108,6 +109,18 @@ const App = () => {
           }, 1000)                   
           setNewName("")
           setNewNumber("")
+        })
+        .catch(error=> {
+          const newPersons = persons.filter(person => person.id !== id)
+          setPersons(newPersons)
+          setNotify(
+            {message:`Henkilön "${newName}" oli jo poistettu`, messageClass:"error"
+            })
+          setTimeout(() => {
+            setNotify({message:"", messageClass:"nothing"})
+          }, 1000)  
+          setNewName('')
+          setNewNumber("")                 
         })
     }  
   }  
