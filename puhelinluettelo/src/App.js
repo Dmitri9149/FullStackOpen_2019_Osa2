@@ -4,11 +4,23 @@ import PersonForm from "./components/PersonForm"
 import Persons from './components/Persons'
 import personService from './services/persons'
 
+const Notification = ({ message, messageClass }) => {
+  if (message === '') {
+    return null
+  }
+  return (
+    <div className = {messageClass}>
+      {message}
+    </div>
+  )
+}
+
 const App = () => {
   const [ persons, setPersons] = useState([]) 
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
   const [newFilter, setNewFilter] = useState("")
+  const [notify, setNotify] = useState({message:"", messageClass:"nothing"})
 
   useEffect(() => {
     console.log('effect')
@@ -17,6 +29,7 @@ const App = () => {
       .then(response => {
         console.log('promise fulfilled')
         setPersons(response.data)
+
       })
   }, [])
 
@@ -37,6 +50,12 @@ const App = () => {
         .create(personObject)
         .then(response => {
           setPersons(persons.concat(response.data))
+          setNotify(
+            {message:`Lisatiin "${newName}" `, messageClass:"added"
+            })
+          setTimeout(() => {
+            setNotify({message:"", messageClass:"nothing"})
+          }, 1000)                   
           setNewName('')
           setNewNumber("")
       })    
@@ -100,10 +119,16 @@ const App = () => {
   ? persons
   : persons.filter(person => person.name.toLowerCase().startsWith(newFilter.toLowerCase()));
 
-
+ 
   return (
     <div>
       <h2>Puhelinluettelo</h2>
+        <Notification 
+          message = {notify.message}
+          messageClass = {notify.messageClass}
+        />
+        <p>{notify.messageClass}</p>
+
       <Filter
         heading = " rajaa näytettäviä:"
         value = {newFilter}
