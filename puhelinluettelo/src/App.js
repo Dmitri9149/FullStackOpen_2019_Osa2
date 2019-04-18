@@ -92,6 +92,13 @@ const App = () => {
         .then(response => {
           console.log(response, "in numberUpdate")
           setPersons(persons.map(person => person.id !== id ? person : response.data))
+
+          setNotify(
+            {message:`"${newName}" phone numero muutetaan`, messageClass:"changed"
+            })
+          setTimeout(() => {
+            setNotify({message:"", messageClass:"nothing"})
+          }, 1000)                   
           setNewName("")
           setNewNumber("")
         })
@@ -127,7 +134,6 @@ const App = () => {
           message = {notify.message}
           messageClass = {notify.messageClass}
         />
-        <p>{notify.messageClass}</p>
 
       <Filter
         heading = " rajaa näytettäviä:"
