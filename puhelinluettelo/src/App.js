@@ -80,6 +80,13 @@ const App = () => {
           console.log(response)
           const newPersons = persons.filter(person => person.id !== id)
           setPersons(newPersons)
+
+          setNotify(
+            {message:`"${person.name}" on poistettu`, messageClass:"eliminated"
+            })
+          setTimeout(() => {
+            setNotify({message:"", messageClass:"nothing"})
+          }, 1000)                   
         })
       }
     }

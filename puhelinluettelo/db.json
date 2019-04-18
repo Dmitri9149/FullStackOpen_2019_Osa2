@@ -1,39 +1,9 @@
 {
   "persons": [
     {
-      "name": "Marti Tienari",
-      "number": "uuuuuuuuuuuu",
-      "id": 4
-    },
-    {
-      "name": "Marti Tienari",
-      "number": "11111111222222222",
-      "id": 5
-    },
-    {
-      "name": "sssss6666",
-      "number": "",
-      "id": 6
-    },
-    {
-      "name": "Lea Kutvonen",
-      "number": "5555555555",
-      "id": 8
-    },
-    {
-      "name": "Dmitri",
-      "number": "888888888888",
-      "id": 9
-    },
-    {
       "name": "Dmitrik",
       "number": "2222222222",
       "id": 10
-    },
-    {
-      "name": "eee",
-      "number": "aaa",
-      "id": 11
     },
     {
       "name": "rrr",
@@ -41,19 +11,9 @@
       "id": 12
     },
     {
-      "name": "eeeeee",
-      "number": "www",
-      "id": 13
-    },
-    {
       "name": "yyyyy",
       "number": "u",
       "id": 14
-    },
-    {
-      "name": "88888888",
-      "number": "888888",
-      "id": 15
     },
     {
       "name": "rrrrrrrrrrrr",
@@ -104,6 +64,16 @@
       "name": "qerwerwe",
       "number": "ertretert",
       "id": 25
+    },
+    {
+      "name": "Dmitriii",
+      "number": "77777777",
+      "id": 26
+    },
+    {
+      "name": "Dmitri",
+      "number": "444444",
+      "id": 27
     }
   ]
 }
