@@ -61,7 +61,7 @@ const App = () => {
       })    
 
     } else {
-//      window.alert(`${newName} on jo luettelossa`);
+        window.alert(`${newName} on jo luettelossa`);
 
         
         const indexOfName = persons[isItNewName].id
