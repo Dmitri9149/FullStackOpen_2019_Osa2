@@ -33,7 +33,7 @@ const App = () => {
       })
   }, [])
 
-  console.log('render', persons.length, 'persons') 
+  console.log('render', persons, 'persons') 
 
   const addPerson = (event) => {
     event.preventDefault()
