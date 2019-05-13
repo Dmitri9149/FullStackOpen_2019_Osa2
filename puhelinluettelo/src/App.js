@@ -115,7 +115,7 @@ const App = () => {
         })
         .catch(error=> 
           {
-            console.log("error name = " , error.name, "     ", error.message  )
+            console.log("error  = " , error )
             const newPersons = persons.filter(person => person.id !== id)
             setPersons(newPersons)
             setNotify(
