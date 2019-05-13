@@ -33,7 +33,7 @@ const App = () => {
       })
   }, [])
 
-  console.log('render', persons, 'persons') 
+  console.log('render', persons.length, 'persons') 
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -48,8 +48,8 @@ const App = () => {
       console.log(isItNewName)
       personService
         .create(personObject)
-        .then(response => {
-          setPersons(persons.concat(response.data))
+        .then(data => {
+          setPersons(persons.concat(data))
           setNotify(
             {message:`Lisatiin "${newName}" `, messageClass:"added"
             })
@@ -61,7 +61,7 @@ const App = () => {
         })
         .catch(error => {
           // pääset käsiksi palvelimen palauttamaan virheilmoitusolioon näin
-          console.log(error.response.data)    
+          console.log(error)    
         })
     } else {
 
@@ -79,8 +79,8 @@ const App = () => {
       if (window.confirm(`Poistetaanko   "${person.name}"  ?`)) {
         personService
         .del(id)
-        .then(response => {
-          console.log(response)
+        .then(data => {
+          console.log(data)
           const newPersons = persons.filter(person => person.id !== id)
           setPersons(newPersons)
 
@@ -100,8 +100,8 @@ const App = () => {
     if (window.confirm(`"${personObject.name}"   on jo luettelossa, korvaatanko vanha numero uudella ?`)){
       personService
         .update(id, personObject)
-        .then(response => {
-          console.log(response, "in numberUpdate")
+        .then(data => {
+          console.log(data, "in numberUpdate")
           setPersons(persons.map(person => person.id !== id ? person : response.data))
 
           setNotify(
