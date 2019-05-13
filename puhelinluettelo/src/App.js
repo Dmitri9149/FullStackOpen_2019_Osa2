@@ -63,10 +63,7 @@ const App = () => {
           // pääset käsiksi palvelimen palauttamaan virheilmoitusolioon näin
           console.log(error)    
         })
-    } else {
-
-
-        
+    } else { 
         const indexOfName = persons[isItNewName].id
         console.log(indexOfName)
         numberUpdate(indexOfName, personObject)
