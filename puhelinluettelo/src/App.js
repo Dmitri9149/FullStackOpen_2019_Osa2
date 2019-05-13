@@ -115,6 +115,7 @@ const App = () => {
         })
         .catch(error=> 
           {if(!(error.name === 'ValidationError')) {
+            console.log("error name = " , {error}  )
             const newPersons = persons.filter(person => person.id !== id)
             setPersons(newPersons)
             setNotify(
