@@ -58,8 +58,11 @@ const App = () => {
           }, 1000)                   
           setNewName('')
           setNewNumber("")
-      })    
-
+        })
+        .catch(error => {
+          // pääset käsiksi palvelimen palauttamaan virheilmoitusolioon näin
+          console.log(error.response.data)    
+        })
     } else {
 {/*       window.alert(`${newName} on jo luettelossa`);  */}
 
