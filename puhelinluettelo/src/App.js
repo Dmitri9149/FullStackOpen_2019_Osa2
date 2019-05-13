@@ -114,7 +114,7 @@ const App = () => {
           setNewNumber("")
         })
         .catch(error=> 
-          {if(!(error.name === 'Error')) {
+          {
             console.log("error name = " , error.name, "     ", error.message  )
             const newPersons = persons.filter(person => person.id !== id)
             setPersons(newPersons)
@@ -126,7 +126,7 @@ const App = () => {
             }, 1000)  
             setNewName('')
             setNewNumber("")
-          }                 
+                           
         })
     }  
   }  
