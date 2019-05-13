@@ -26,9 +26,9 @@ const App = () => {
     console.log('effect')
     personService
       .getAll()
-      .then(response => {
+      .then(data => {
         console.log('promise fulfilled')
-        setPersons(response.data)
+        setPersons(data)
 
       })
   }, [])
