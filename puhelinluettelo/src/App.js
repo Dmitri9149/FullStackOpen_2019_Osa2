@@ -64,7 +64,7 @@ const App = () => {
           console.log(error.response.data)    
         })
     } else {
-{/*       window.alert(`${newName} on jo luettelossa`);  */}
+
 
         
         const indexOfName = persons[isItNewName].id
@@ -115,7 +115,7 @@ const App = () => {
         })
         .catch(error=> 
           {if(!(error.name === 'ValidationError')) {
-            console.log("error name = " , {error}  )
+            console.log("error name = " , error.name, "     ", error.message  )
             const newPersons = persons.filter(person => person.id !== id)
             setPersons(newPersons)
             setNotify(
