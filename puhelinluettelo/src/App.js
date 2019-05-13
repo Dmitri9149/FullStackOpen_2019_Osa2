@@ -102,7 +102,7 @@ const App = () => {
         .update(id, personObject)
         .then(data => {
           console.log(data, "in numberUpdate")
-          setPersons(persons.map(person => person.id !== id ? person : response.data))
+          setPersons(persons.map(person => person.id !== id ? person : data))
 
           setNotify(
             {message:`"${newName}" phone numero muutetaan`, messageClass:"changed"
