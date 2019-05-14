@@ -62,6 +62,8 @@ const App = () => {
         .catch(error => {
           console.log("error (new name) =", error)
           console.log("error (new name) =", error.response.data)
+          console.log("error (new name) =", error.response)
+          console.log("error (new name) =", error.name)
           setNotify(
             {message:error.response.data.error, messageClass:"error"
           })  
@@ -120,6 +122,7 @@ const App = () => {
               console.log("error  = " , error )
               console.log("error.response.data= ", error.response.data)
               console.log("error.response = ", error.response)
+              console.log("error.response = ", error.response.data.error)
 
               const newPersons = persons.filter(person => person.id !== id)
               setPersons(newPersons)
