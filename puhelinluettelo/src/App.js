@@ -122,7 +122,7 @@ const App = () => {
               console.log("error  = " , error )
               console.log("error.response.data= ", error.response.data)
               console.log("error.response = ", error.response)
-              console.log("error.response = ", error.response.data.toString())
+              console.log("error.response.data.toString().error = ", error.response.data.toString().error)
               
 
               const newPersons = persons.filter(person => person.id !== id)
