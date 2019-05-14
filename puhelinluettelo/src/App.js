@@ -113,7 +113,7 @@ const App = () => {
           setNewNumber("")
         })
         .catch(error=> 
-          {
+          { if(!error.response.data.includes("Validation failed: number: Path `number`")){
             console.log("error  = " , error )
             console.log("error.response.data= ", error.response.data)
             console.log("error.response = ", error.response)
@@ -128,6 +128,7 @@ const App = () => {
             }, 1000)  
             setNewName('')
             setNewNumber("")
+            }
                            
         })
     }  
