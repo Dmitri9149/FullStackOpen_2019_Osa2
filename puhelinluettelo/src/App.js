@@ -60,9 +60,8 @@ const App = () => {
           setNewNumber("")
         })
         .catch(error => {
-          // pääset käsiksi palvelimen palauttamaan virheilmoitusolioon näin
-          console.log("error (not new name) =", error)
-          console.log("error (not new name) =", error.response.data)   
+          console.log("error (new name) =", error)
+          console.log("error (new name) =", error.response.data)   
         })
     } else { 
         const indexOfName = persons[isItNewName].id
@@ -113,21 +112,26 @@ const App = () => {
           setNewNumber("")
         })
         .catch(error=> 
-          { if(!error.response.data.error.includes("Validation failed: number: Path `number`")){
-            console.log("error  = " , error )
-            console.log("error.response.data= ", error.response.data)
-            console.log("error.response = ", error.response)
+          { 
+            if(!error.response.data.error.includes("Validation failed: number: Path `number`")){
+              console.log("error  = " , error )
+              console.log("error.response.data= ", error.response.data)
+              console.log("error.response = ", error.response)
 
-            const newPersons = persons.filter(person => person.id !== id)
-            setPersons(newPersons)
-            setNotify(
-              {message:`Henkilön "${newName}" oli jo poistettu`, messageClass:"error"
+              const newPersons = persons.filter(person => person.id !== id)
+              setPersons(newPersons)
+              setNotify(
+                {message:`Henkilön "${newName}" oli jo poistettu`, messageClass:"error"
               })
-            setTimeout(() => {
-              setNotify({message:"", messageClass:"nothing"})
-            }, 1000)  
-            setNewName('')
-            setNewNumber("")
+              setTimeout(() => {
+                setNotify({message:"", messageClass:"nothing"})
+              }, 1000)  
+              setNewName('')
+              setNewNumber("")
+            } else {
+              setNotify(
+                {message:error.responde.data, messageClass:"error"
+              })
             }
                            
         })
