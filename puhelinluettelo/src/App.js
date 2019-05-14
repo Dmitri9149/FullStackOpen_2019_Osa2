@@ -61,7 +61,10 @@ const App = () => {
         })
         .catch(error => {
           console.log("error (new name) =", error)
-          console.log("error (new name) =", error.response.data)   
+          console.log("error (new name) =", error.response.data)
+          setNotify(
+            {message:error.response.data, messageClass:"error"
+          })  
         })
     } else { 
         const indexOfName = persons[isItNewName].id
@@ -130,7 +133,7 @@ const App = () => {
               setNewNumber("")
             } else {
               setNotify(
-                {message:error.responde.data, messageClass:"error"
+                {message:error.response.data, messageClass:"error"
               })
             }
                            
