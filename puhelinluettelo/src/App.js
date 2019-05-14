@@ -118,7 +118,7 @@ const App = () => {
         })
         .catch(error=> 
           { 
-            if(!error.response.data.toString().get("error")) {
+            if(!error.response.data.toString().error) {
               console.log("error  = " , error )
               console.log("error.response.data= ", error.response.data)
               console.log("error.response = ", error.response)
