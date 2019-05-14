@@ -61,9 +61,9 @@ const App = () => {
         })
         .catch(error => {
           console.log("error (new name) =", error)
-          console.log("error (new name) =", error.response.data)
-          console.log("error (new name) =", error.response)
-          console.log("error (new name) =", error.name)
+          console.log("error.response.data (new name) =", error.response.data)
+          console.log("error.response (new name) =", error.response)
+          console.log("error.name (new name) =", error.name)
           setNotify(
             {message:error.response.data.error, messageClass:"error"
           })  
