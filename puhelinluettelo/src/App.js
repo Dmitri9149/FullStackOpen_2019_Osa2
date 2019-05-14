@@ -99,6 +99,7 @@ const App = () => {
         .update(id, personObject)
         .then(data => {
           console.log(data, "in numberUpdate")
+          
           setPersons(persons.map(person => person.id !== id ? person : data))
 
           setNotify(
@@ -113,6 +114,8 @@ const App = () => {
         .catch(error=> 
           {
             console.log("error  = " , error )
+            console.log("error.response.data= ", error.response.data)
+            
             const newPersons = persons.filter(person => person.id !== id)
             setPersons(newPersons)
             setNotify(
