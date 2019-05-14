@@ -61,7 +61,8 @@ const App = () => {
         })
         .catch(error => {
           // pääset käsiksi palvelimen palauttamaan virheilmoitusolioon näin
-          console.log(error)    
+          console.log("error (not new name) =", error)
+          console.log("error (not new name) =", error.response.data)   
         })
     } else { 
         const indexOfName = persons[isItNewName].id
