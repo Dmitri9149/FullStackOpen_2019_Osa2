@@ -63,7 +63,7 @@ const App = () => {
           console.log("error (new name) =", error)
           console.log("error (new name) =", error.response.data)
           setNotify(
-            {message:error.response.data, messageClass:"error"
+            {message:error.response.data.error, messageClass:"error"
           })  
         })
     } else { 
@@ -133,7 +133,7 @@ const App = () => {
               setNewNumber("")
             } else {
               setNotify(
-                {message:error.response.data, messageClass:"error"
+                {message:error.response.data.error, messageClass:"error"
               })
             }
                            
