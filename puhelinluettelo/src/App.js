@@ -65,7 +65,7 @@ const App = () => {
           console.log("error.response (new name) =", error.response)
           console.log("error.name (new name) =", error.name)
           setNotify(
-            {message:error.response.data.error, messageClass:"error"
+            {message:error.response.data.error, messageClass:"errorValuation"
           })  
         })
     } else { 
@@ -128,7 +128,7 @@ const App = () => {
               const newPersons = persons.filter(person => person.id !== id)
               setPersons(newPersons)
               setNotify(
-                {message:`Henkilön "${newName}" oli jo poistettu`, messageClass:"error"
+                {message:`Henkilön "${newName}" oli jo poistettu`, messageClass:"errorAbsence"
               })
               setTimeout(() => {
                 setNotify({message:"", messageClass:"nothing"})
@@ -137,7 +137,7 @@ const App = () => {
               setNewNumber("")
             } else {
               setNotify(
-                {message:error.response.data.error, messageClass:"error"
+                {message:error.response.data.error, messageClass:"errorValuation"
               })
             }
                            

@@ -19,8 +19,15 @@
 
 }
 
-.error {
+.errorAbsence {
   background-color: rgb(231, 152, 49);
+  padding: 11px;
+  margin-bottom: 12px
+
+}
+
+.errorValuation {
+  background-color: rgb(167, 231, 49);
   padding: 11px;
   margin-bottom: 12px
 
